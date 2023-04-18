@@ -1,0 +1,24 @@
+.theme {
+    -name: "default";
+    -author: "Shiru";
+    -comment: "The good old default look of decryptor";
+}
+
+.root {
+    -fx-background-color: #23272a; /* Background Color of main form and text areas */
+    -fx-text-fill: white;
+}
+
+.root .content {
+    -fx-background-color: #23272a; /* Background Color of main form and text areas */
+}
+
+.splitter *.split-pane-divider {
+    -fx-border-color: #23272a; /*Border color same as background of main*/
+    -fx-border-radius: 350%;
+    -fx-background-color: #0f1011; /*Divider background color*/
+}
+
+.menubar {
+    -fx-background-color: #7870ea; /* Background Color of menubar (not the menu-items) */
+}

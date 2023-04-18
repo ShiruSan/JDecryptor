@@ -1,0 +1,5 @@
+rootProject.name = 'JDecryptor'
+include "DecryptorDesktop"
+include 'DecryptorCore'
+include 'DecryptorDesktop'
+
