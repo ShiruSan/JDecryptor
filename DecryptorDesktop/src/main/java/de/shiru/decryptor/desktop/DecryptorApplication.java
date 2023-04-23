@@ -13,15 +13,16 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-
 import java.util.List;
 import java.util.Objects;
 
 public class DecryptorApplication extends Application {
     public static final Image ICON = new Image(Objects.requireNonNull(DecryptorApplication.class.getResourceAsStream("/images/icon.ico")));
+    public ThemeManager themeManager;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        new ThemeManager();
         var loader = new FXMLLoader(this.getClass().getResource("/fxml/Decryptor.fxml"));
         VBox container = loader.load();
         MainController mainController = loader.getController();
@@ -30,6 +31,12 @@ public class DecryptorApplication extends Application {
         primaryStage.getIcons().add(ICON);
         primaryStage.setScene(scene);
         primaryStage.setTitle("Decryptor 1.4");
+        themeManager = new ThemeManager();
+        themeManager.setOnThemeChange((theme) -> {
+            container.getStylesheets().clear();
+            container.getStylesheets().add(String.valueOf(theme.getURL()));
+        });
+        themeManager.setup();
         var splashStage = new Stage(StageStyle.UNDECORATED);
         splashStage.initModality(Modality.NONE);
         var splashScreen = new Image(Objects.requireNonNull(this.getClass().getResourceAsStream("/images/splash-screen.png")));
