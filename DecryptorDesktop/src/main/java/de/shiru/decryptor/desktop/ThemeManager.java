@@ -14,7 +14,7 @@ public class ThemeManager {
     private Consumer<Theme> onThemeChange;
     private Theme currentTheme;
 
-    public ThemeManager() throws IOException, Theme.ThemeUnvalidException {
+    public ThemeManager() throws Exception {
         var dir = System.getProperty("user.dir");
         var dirFile = new File(dir, "Themes");
         var resource = getClass().getResource("/fxml/Decryptor.css");

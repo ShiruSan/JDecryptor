@@ -2,32 +2,32 @@ package de.shiru.decryptor.desktop.controllers;
 
 import de.shiru.decryptor.core.Encrypting;
 import de.shiru.decryptor.desktop.DecryptorApplication;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import java.io.IOException;
 import java.security.InvalidAlgorithmParameterException;
 import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Objects;
 
 public class MainController {
     public Stage stage;
     public TextArea inputTextArea;
     public TextArea outputTextArea;
+
+    public void init() {
+        stage.setOnCloseRequest((x)-> {
+            onQuitClicked();
+            x.consume();
+        });
+    }
 
     public void onQuitClicked() {
         var alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -39,7 +39,8 @@ public class MainController {
         label.setFont(Font.font(14));
         alert.getDialogPane().contentProperty().set(label);
         alert.initOwner(stage);
-        alert.showAndWait();
+        var result = alert.showAndWait();
+        if(result.get() == ButtonType.OK) stage.close();
     }
 
     public void onEncryptClicked() throws IOException, InvalidAlgorithmParameterException, IllegalBlockSizeException, InvalidKeyException {

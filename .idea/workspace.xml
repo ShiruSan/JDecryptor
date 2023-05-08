@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f586561e-31ea-494a-b4b7-160bd8457884" name="Changes" comment="init commit">
-      <change afterPath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Theme.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/ThemeManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/resources/fxml/Settings.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DecryptorCore/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Theme.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DecryptorCore/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/DecryptorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/DecryptorApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/resources/fxml/Decryptor.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/resources/fxml/Decryptor.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/ThemeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/ThemeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/EncryptionChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/EncryptionChooseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +33,7 @@
       <list>
         <option value="module-info" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -45,26 +51,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "D:/Coding/workspace/Java/JDecryptor",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "shared-indexes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/usr/share/applications/scenebuilder-SceneBuilder.desktop&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Coding\workspace\Java\JDecryptor" />
@@ -98,8 +104,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main" />
         <item itemvalue="Application.DecryptorApplication" />
+        <item itemvalue="Application.main" />
       </list>
     </recent_temporary>
   </component>
@@ -119,6 +125,13 @@
       <workItem from="1681846727371" duration="5270000" />
       <workItem from="1681911533102" duration="1046000" />
       <workItem from="1682247208510" duration="7179000" />
+      <workItem from="1683299860483" duration="537000" />
+      <workItem from="1683300424498" duration="1425000" />
+      <workItem from="1683357038882" duration="438000" />
+      <workItem from="1683359131518" duration="3349000" />
+      <workItem from="1683379455289" duration="1661000" />
+      <workItem from="1683457309522" duration="676000" />
+      <workItem from="1683460746075" duration="1843000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1681849802692</created>

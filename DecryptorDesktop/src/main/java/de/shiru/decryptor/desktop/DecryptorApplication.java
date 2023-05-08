@@ -27,9 +27,10 @@ public class DecryptorApplication extends Application {
         VBox container = loader.load();
         MainController mainController = loader.getController();
         mainController.stage = primaryStage;
+        mainController.init();
         var scene = new Scene(container, container.getPrefWidth(), container.getPrefHeight());
-        primaryStage.getIcons().add(ICON);
         primaryStage.setScene(scene);
+        primaryStage.getIcons().add(ICON);;
         primaryStage.setTitle("Decryptor 1.4");
         themeManager = new ThemeManager();
         themeManager.setOnThemeChange((theme) -> {

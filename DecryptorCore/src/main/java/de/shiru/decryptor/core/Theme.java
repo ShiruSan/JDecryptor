@@ -1,7 +1,10 @@
 package de.shiru.decryptor.core;
 
-import com.helger.css.reader.CSSReader;
-import com.helger.css.reader.CSSReaderSettings;
+import cz.vutbr.web.css.CSSException;
+import cz.vutbr.web.css.CSSFactory;
+import cz.vutbr.web.css.Declaration;
+import cz.vutbr.web.css.RuleSet;
+
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -13,7 +16,7 @@ public class Theme {
     private URL url;
     private String path;
 
-    public Theme(String themePath) throws IOException, ThemeUnvalidException {
+    public Theme(String themePath) throws IOException, ThemeUnvalidException, CSSException {
         try(var stream = new FileInputStream(themePath)) {
             loadProperties(stream.readAllBytes());
         }
@@ -24,32 +27,28 @@ public class Theme {
         } catch (MalformedURLException ignored) {}
     }
 
-    public Theme(byte[] themeContent, URL url) throws ThemeUnvalidException {
+    public Theme(byte[] themeContent, URL url) throws ThemeUnvalidException, CSSException, IOException {
         loadProperties(themeContent);
         this.url = url;
     }
 
-    private void loadProperties(byte[] themeContent) throws ThemeUnvalidException {
-        var reader = CSSReader.readFromStringStream(new String(themeContent), new CSSReaderSettings());
+    private void loadProperties(byte[] themeContent) throws ThemeUnvalidException, CSSException, IOException {
+        var styleSheet = CSSFactory.parseString(new String(themeContent), null);
         try {
-            var ruleName = reader.getStyleRuleAtIndex(0).getSelectorAtIndex(0).getMemberAtIndex(0).getAsCSSString();
-            if(!ruleName.equals(".theme")) throw new ThemeUnvalidException("Please start with the theme rule in stylesheet !");
+            RuleSet rule = (RuleSet) styleSheet.get(0);
+            if(!rule.getSelectors()[0].toString().equals(".theme")) throw new ThemeUnvalidException("Please start with the theme rule in stylesheet !");
 
-            var nameDeclaration = reader.getStyleRuleAtIndex(0).getDeclarationAtIndex(0);
+            var nameDeclaration = (Declaration) rule.get(0);
             if(!nameDeclaration.getProperty().equals("-name")) throw new ThemeUnvalidException("name property expected in stylesheet !");
-            var themeName = nameDeclaration.getExpression().getMemberAtIndex(0).getAsCSSString();
+            name = (String) nameDeclaration.get(0).getValue();
 
-            var authorDeclaration = reader.getStyleRuleAtIndex(0).getDeclarationAtIndex(1);
+            var authorDeclaration = (Declaration) rule.get(1);
             if(!authorDeclaration.getProperty().equals("-author")) throw new ThemeUnvalidException("author property expected in stylesheet !");
-            var authorName = authorDeclaration.getExpression().getMemberAtIndex(0).getAsCSSString();
+            author = (String) authorDeclaration.get(0).getValue();
 
-            var commentDeclaration = reader.getStyleRuleAtIndex(0).getDeclarationAtIndex(2);
+            var commentDeclaration = (Declaration) rule.get(2);
             if(!commentDeclaration.getProperty().equals("-comment")) throw new ThemeUnvalidException("comment property expected in stylesheet !");
-            var commentName = commentDeclaration.getExpression().getMemberAtIndex(0).getAsCSSString();
-
-            name = themeName.substring(1, themeName.length() - 1);
-            author = authorName.substring(1, authorName.length() - 1);
-            comment = commentName.substring(1, commentName.length() - 1);
+            comment = (String) commentDeclaration.get(0).getValue();
         } catch (Exception e) {
             if(e instanceof ThemeUnvalidException) throw e;
             throw new ThemeUnvalidException("Error while reading css theme !");

@@ -1,6 +1,5 @@
 package de.shiru.decryptor.desktop.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
