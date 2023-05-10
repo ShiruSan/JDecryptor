@@ -11,9 +11,10 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class Encrypting {
+    private static final List<Character> lowerCaseABC= toList("abcdefghijklmnopqrstuvwxyz".toCharArray());
+    private static final List<Character> upperCaseABC = toList("ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray());
     private static final List<Character> ABC = toList("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.!?-_ {}();'=+".toCharArray());
     private static final List<Character> SaikoC = toList(")0wk8AyD+5=dL lB-?i1VQt63;,9vTCNzn}4Z_Pfp7'sXS.2Fu{J(UOHhobEmKgrjaYGqeR!WcxMI".toCharArray());
-    private static final List<Character> Caesar = toList("9abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ012345678".toCharArray());
 
     private static List<Character> toList(char[] chars) {
         var characters = new ArrayList<Character>();
@@ -47,26 +48,40 @@ public class Encrypting {
         return builder.toString();
     }
 
-    public static String encryptCaesar(String message) {
+    public static String encryptCaesar(String message, int s) {
         var builder = new StringBuilder();
-        for(var c : message.toCharArray()) {
-            if(!Caesar.contains(c)) {
-                builder.append(c);
-                continue;
+        if(s > lowerCaseABC.size()) s %= lowerCaseABC.size();
+        var messageArray = message.toCharArray();
+        for(var c : messageArray) {
+            if(!Character.isAlphabetic(c)) {builder.append(c); continue;}
+            if(Character.isLowerCase(c)) {
+                var index = lowerCaseABC.indexOf(c) + s;
+                if(index >= lowerCaseABC.size()) index %= lowerCaseABC.size();
+                builder.append(lowerCaseABC.get(index));
+            } else {
+                var index = upperCaseABC.indexOf(c) + s;
+                if(index >= upperCaseABC.size()) index %= upperCaseABC.size();
+                builder.append(upperCaseABC.get(index));
             }
-            builder.append(Caesar.get(ABC.indexOf(c)));
         }
         return builder.toString();
     }
 
-    public static String decryptCaesar(String message) {
+    public static String decryptCaesar(String message, int s) {
         var builder = new StringBuilder();
-        for(char c : message.toCharArray()) {
-            if(!ABC.contains(c)) {
-                builder.append(c);
-                continue;
+        if(s > lowerCaseABC.size()) s %= lowerCaseABC.size();
+        var messageArray = message.toCharArray();
+        for(var c : messageArray) {
+            if(!Character.isAlphabetic(c)) {builder.append(c); continue;}
+            if(Character.isLowerCase(c)) {
+                var index = lowerCaseABC.indexOf(c) - s;
+                if(index < 0) index += lowerCaseABC.size();
+                builder.append(lowerCaseABC.get(index));
+            } else {
+                var index = upperCaseABC.indexOf(c) - s;
+                if(index < 0) index += upperCaseABC.size();
+                builder.append(upperCaseABC.get(index));
             }
-            builder.append(ABC.get(Caesar.indexOf(c)));
         }
         return builder.toString();
     }

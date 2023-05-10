@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f586561e-31ea-494a-b4b7-160bd8457884" name="Changes" comment="init commit">
-      <change afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/resources/fxml/Settings.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DecryptorCore/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Theme.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Theme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorCore/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Encrypting.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorCore/src/main/java/de/shiru/decryptor/core/Encrypting.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DecryptorDesktop/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/DecryptorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/DecryptorApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/ThemeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/ThemeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/EncryptionChooseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/EncryptionChooseController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/de/shiru/decryptor/desktop/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/DecryptorDesktop/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,6 +126,9 @@
       <workItem from="1683379455289" duration="1661000" />
       <workItem from="1683457309522" duration="676000" />
       <workItem from="1683460746075" duration="1843000" />
+      <workItem from="1683722422807" duration="1142000" />
+      <workItem from="1683725264381" duration="1785000" />
+      <workItem from="1683740406917" duration="1237000" />
     </task>
     <task id="LOCAL-00001" summary="init commit">
       <created>1681849802692</created>

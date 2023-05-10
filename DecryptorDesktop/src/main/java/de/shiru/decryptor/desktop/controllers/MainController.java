@@ -74,7 +74,26 @@ public class MainController {
                 break;
 
             case Caesar:
-                outputTextArea.setText(Encrypting.encryptCaesar(inputTextArea.getText()));
+                var caesarDialog = new TextInputDialog();
+                caesarDialog.getDialogPane().setHeaderText("Number for Caesar displacement");
+                caesarDialog.setTitle("Enter a number for Caesar displacement");
+                caesarDialog.setContentText("Please enter a number for Caesar displacement:");
+                var caesarDialogStage = (Stage) caesarDialog.getDialogPane().getScene().getWindow();
+                caesarDialogStage.getIcons().add(DecryptorApplication.ICON);
+                caesarDialog.showAndWait();
+                if(caesarDialog.getEditor().getText().equals("")) return;
+                String number = caesarDialog.getEditor().getText();
+                try {
+                    var s = Integer.parseInt(number);
+                    outputTextArea.setText(Encrypting.encryptCaesar(inputTextArea.getText(), s));
+                } catch (NumberFormatException ignored) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter a valid number.");
+                    alert.setTitle("Error");
+                    alert.initOwner(stage);
+                    alert.show();
+                    return;
+                }
                 break;
 
             case AES:
@@ -129,7 +148,26 @@ public class MainController {
                 break;
 
             case Caesar:
-                outputTextArea.setText(Encrypting.decryptCaesar(inputTextArea.getText()));
+                var caesarDialog = new TextInputDialog();
+                caesarDialog.getDialogPane().setHeaderText("Number for Caesar displacement");
+                caesarDialog.setTitle("Enter a number for Caesar displacement");
+                caesarDialog.setContentText("Please enter a number for Caesar displacement:");
+                var caesarDialogStage = (Stage) caesarDialog.getDialogPane().getScene().getWindow();
+                caesarDialogStage.getIcons().add(DecryptorApplication.ICON);
+                caesarDialog.showAndWait();
+                if(caesarDialog.getEditor().getText().equals("")) return;
+                String number = caesarDialog.getEditor().getText();
+                try {
+                    var s = Integer.parseInt(number);
+                    outputTextArea.setText(Encrypting.decryptCaesar(inputTextArea.getText(), s));
+                } catch (NumberFormatException ignored) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Please enter a valid number.");
+                    alert.setTitle("Error");
+                    alert.initOwner(stage);
+                    alert.show();
+                    return;
+                }
                 break;
 
             case AES:
