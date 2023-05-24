@@ -1,0 +1,10 @@
+The internal encryption method is an own encryption process based on shuffling the alphabet and some special characters.
+The result depends on the seed, because the hashcode of it is used in the random algorithm to shuffle the characters.
+It's a simple encryption method which is difficult to revert without the original seed.
+
+Advantages:
+- simple low-effort encryption
+- encrypted text is very difficult to decrypt without seed
+
+Disadvantages:
+-

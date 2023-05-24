@@ -3,18 +3,18 @@ package de.shiru.decryptor.desktop;
 import de.shiru.decryptor.core.Theme;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 
 public class ThemeManager {
-    private final List<Theme> themeList = new ArrayList<>();
+    private final List<Theme> themeList;
     private Consumer<Theme> onThemeChange;
     private Theme currentTheme;
 
     public ThemeManager() throws Exception {
+        themeList = new ArrayList<>();
         var dir = System.getProperty("user.dir");
         var dirFile = new File(dir, "Themes");
         var resource = getClass().getResource("/fxml/Decryptor.css");

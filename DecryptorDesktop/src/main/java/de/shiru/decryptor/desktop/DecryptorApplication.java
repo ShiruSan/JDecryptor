@@ -30,7 +30,7 @@ public class DecryptorApplication extends Application {
         mainController.init();
         var scene = new Scene(container, container.getPrefWidth(), container.getPrefHeight());
         primaryStage.setScene(scene);
-        primaryStage.getIcons().add(ICON);;
+        primaryStage.getIcons().add(ICON);
         primaryStage.setTitle("Decryptor 1.4");
         themeManager = new ThemeManager();
         themeManager.setOnThemeChange((theme) -> {

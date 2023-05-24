@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -53,24 +52,30 @@ public class MainController {
             return;
         }
         var loader = new FXMLLoader(this.getClass().getResource("/fxml/EncryptionChooseDialog.fxml"));
-        VBox box = loader.load();
+        SplitPane box = loader.load();
         EncryptionChooseController controller = loader.getController();
         var stage = new Stage(StageStyle.UNIFIED);
         stage.initOwner(this.stage);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.getIcons().add(DecryptorApplication.ICON);
-        controller.stage = stage;
         stage.setScene(new Scene(box, box.getPrefWidth(), box.getPrefHeight()));
         stage.setResizable(false);
         stage.setAlwaysOnTop(true);
-        stage.setTitle("Encryption type");
-        controller.label.setText("Which encryption do you want to use ?");
+        stage.setTitle("Choose your encryption method");
         stage.showAndWait();
-        if(controller.choice == null) return;
-        var type = Encrypting.Type.getByName(controller.choice);
+        var type = controller.getSelectedType();
+        if(type == null) return;
         switch (Objects.requireNonNull(type)) {
             case Internal:
-                outputTextArea.setText(Encrypting.encryptSaikoC(inputTextArea.getText()));
+                var seedDialog = new TextInputDialog();
+                seedDialog.getDialogPane().setHeaderText("Seed for Internal encryption");
+                seedDialog.setTitle("Enter a text for internal shuffle generation");
+                seedDialog.setContentText("Please enter a text for internal shuffle generation:");
+                var seedDialogStage = (Stage) seedDialog.getDialogPane().getScene().getWindow();
+                seedDialogStage.getIcons().add(DecryptorApplication.ICON);
+                seedDialog.showAndWait();
+                if(seedDialog.getEditor().getText().equals("")) return;
+                outputTextArea.setText(Encrypting.encryptInternal(inputTextArea.getText(), seedDialog.getEditor().getText()));
                 break;
 
             case Caesar:
@@ -127,24 +132,30 @@ public class MainController {
             return;
         }
         var loader = new FXMLLoader(this.getClass().getResource("/fxml/EncryptionChooseDialog.fxml"));
-        VBox box = loader.load();
+        SplitPane box = loader.load();
         EncryptionChooseController controller = loader.getController();
         var stage = new Stage(StageStyle.UNIFIED);
         stage.initOwner(this.stage);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.getIcons().add(DecryptorApplication.ICON);
-        controller.stage = stage;
         stage.setScene(new Scene(box, box.getPrefWidth(), box.getPrefHeight()));
         stage.setResizable(false);
         stage.setAlwaysOnTop(true);
-        stage.setTitle("Decryption type");
-        controller.label.setText("Which decryption do you want to use ?");
+        stage.setTitle("Choose your decryption method");
         stage.showAndWait();
-        if(controller.choice == null) return;
-        var type = Encrypting.Type.getByName(controller.choice);
+        var type = controller.getSelectedType();
+        if(type == null) return;
         switch (Objects.requireNonNull(type)) {
             case Internal:
-                outputTextArea.setText(Encrypting.decryptSaikoC(inputTextArea.getText()));
+                var seedDialog = new TextInputDialog();
+                seedDialog.getDialogPane().setHeaderText("Seed for Internal decryption");
+                seedDialog.setTitle("Enter a text for internal shuffle generation");
+                seedDialog.setContentText("Please enter a text for internal shuffle generation:");
+                var seedDialogStage = (Stage) seedDialog.getDialogPane().getScene().getWindow();
+                seedDialogStage.getIcons().add(DecryptorApplication.ICON);
+                seedDialog.showAndWait();
+                if(seedDialog.getEditor().getText().equals("")) return;
+                outputTextArea.setText(Encrypting.decryptInternal(inputTextArea.getText(), seedDialog.getEditor().getText()));
                 break;
 
             case Caesar:
@@ -158,8 +169,8 @@ public class MainController {
                 if(caesarDialog.getEditor().getText().equals("")) return;
                 String number = caesarDialog.getEditor().getText();
                 try {
-                    var s = Integer.parseInt(number);
-                    outputTextArea.setText(Encrypting.decryptCaesar(inputTextArea.getText(), s));
+                    var key = Integer.parseInt(number);
+                    outputTextArea.setText(Encrypting.decryptCaesar(inputTextArea.getText(), key));
                 } catch (NumberFormatException ignored) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("Please enter a valid number.");

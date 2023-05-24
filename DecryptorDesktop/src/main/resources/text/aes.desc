@@ -1,0 +1,9 @@
+AES is a password-based encryption method where the encrypted text can only be viewed again with the correct password.
+In the encryption process, the password does not flow directly into the encryption algorithm, but the SHA256 value is used, which makes it more difficult to decipher the password from the encrypted text in any way.
+
+Advantages:
+- Most secure encryption method in this app
+- AES is secure encryption used in applications where data must be transmitted securely and unrecognisably.
+
+Disadvantages:
+- Because the SHA256 value is used, there is potentially more than one password to decrypt the data (but not practically feasible).

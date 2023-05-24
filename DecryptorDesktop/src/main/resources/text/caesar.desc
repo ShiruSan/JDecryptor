@@ -1,0 +1,9 @@
+The Caesar encryption is the simplest encryption method included in this app.
+It encrypts by shifting the alphabet by an entered key, using only the alphabet and leaving out spaces and special characters.
+
+Advantages:
+- Because it is so easy, it can help in understanding encryption algorithms
+
+Disadvantages:
+- Encrypted text shows the original structure of the data
+- Even without the key it's possible to revert the encryption

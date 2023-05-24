@@ -11,10 +11,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 public class Encrypting {
-    private static final List<Character> lowerCaseABC= toList("abcdefghijklmnopqrstuvwxyz".toCharArray());
+    private static final List<Character> lowerCaseABC = toList("abcdefghijklmnopqrstuvwxyz".toCharArray());
     private static final List<Character> upperCaseABC = toList("ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray());
     private static final List<Character> ABC = toList("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,.!?-_ {}();'=+".toCharArray());
-    private static final List<Character> SaikoC = toList(")0wk8AyD+5=dL lB-?i1VQt63;,9vTCNzn}4Z_Pfp7'sXS.2Fu{J(UOHhobEmKgrjaYGqeR!WcxMI".toCharArray());
 
     private static List<Character> toList(char[] chars) {
         var characters = new ArrayList<Character>();
@@ -24,26 +23,40 @@ public class Encrypting {
         return characters;
     }
 
-    public static String encryptSaikoC(String message) {
+    private static List<Character> generateInternalEncryptionList(String seed) {
+        var list = new ArrayList<Character>(ABC.size());
+        list.addAll(ABC);
+        var r = new Random(seed.hashCode());
+        var shuffle = r.nextInt(Integer.MAX_VALUE);
+        for(int i = 0; i < list.size(); i++) {
+            char a = list.get(i);
+            char b;
+            if(i + shuffle >= (list.size() - 1)) b = list.get((i + shuffle) % (list.size() - 1));
+            else b = list.get(i + shuffle);
+            var index = list.indexOf(b);
+            list.set(i, b);
+            list.set(index, a);
+            shuffle = r.nextInt(Integer.MAX_VALUE);
+        }
+        return list;
+    }
+
+    public static String encryptInternal(String message, String seed) {
         var builder = new StringBuilder();
+        var encryptionList = generateInternalEncryptionList(seed);
         for(var c : message.toCharArray()) {
-            if(!ABC.contains(c)) {
-                builder.append(c);
-                continue;
-            }
-            builder.append(SaikoC.get(ABC.indexOf(c)));
+            if(!encryptionList.contains(c)) {builder.append(c); continue;}
+            builder.append(encryptionList.get(ABC.indexOf(c)));
         }
         return builder.toString();
     }
 
-    public static String decryptSaikoC(String message) {
+    public static String decryptInternal(String message, String seed) {
         var builder = new StringBuilder();
+        var encryptionList = generateInternalEncryptionList(seed);
         for(var c : message.toCharArray()) {
-            if(!ABC.contains(c)) {
-                builder.append(c);
-                continue;
-            }
-            builder.append(ABC.get(SaikoC.indexOf(c)));
+            if(!encryptionList.contains(c)) {builder.append(c); continue;}
+            builder.append(ABC.get(encryptionList.indexOf(c)));
         }
         return builder.toString();
     }
